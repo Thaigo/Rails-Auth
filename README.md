@@ -1,24 +1,23 @@
-# README
+# Ruby on Rails - Autenticação e Autorização com Devise, CanCanCan e Rolify
+=========================================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Summary
+-------
+Tutorial para o Blog
 
-Things you may want to cover:
+Generated project characteristics
+-------------------------
 
-* Ruby version
+* gem 'materialize-css'
+* gem 'devise'
+* gem 'rolify'
+* gem 'cancancan'
 
-* System dependencies
 
-* Configuration
+Prerequisites
+-------------
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Rails 5
+- bundle install
+- rails db:migrate
+- rails s
