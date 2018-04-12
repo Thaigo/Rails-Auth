@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h4>Tickets</h4>
+
+<%= link_to new_ticket_path, method: :get, class: "btn-floating waves-light blue" do %>
+  <i class="material-icons">fiber_new</i>
+<% end %>
+
+
+<br>
+
+    <div class="row">
+      <% @tickets.each do |ticket| %>
+      <% if @ability.can? :read, Ticket, user_id: current_user.id %>
+        <div class="col s4 l4 m4">
+          <div class="card light-blue lighten-2">
+            <div class="card-content white-text">
+              <span class="card-title"><td><%= ticket.title %></td></span>
+                <p><%= status_label ticket.status %></p>  <p><%= ticket.user.email %></p> 
+            </div>
+            <div class="card-action">
+              <% if @ability.can? :edit, Ticket %>
+                <td><%= link_to 'rejected', rejected_ticket_path(ticket), class: "btn waves-effect waves-light red" %></td>
+                <td><%= link_to 'Approve', approve_ticket_path(ticket), class: "btn waves-effect waves-light green" %></td>
+              <% end %>
+              <hr>
+              <% if @ability.can? :destroy, Ticket %>
+                <td>
+                  <%= link_to ticket, method: :delete, class: "btn-floating halfway-fab waves-effect waves-light red", data: { confirm: "Tem certeza que deseja Excluir" } do %>
+                    <i class="material-icons">delete</i>
+                  <% end %>
+                </td>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>    
+      <% end %>
+    </div>
+
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<h3>Area Admin</h3>
+
+<table class="centered striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Role</th>      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %> 
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.roles.last.name %></td>
+          <td><%= link_to 'Make Supervisor', supervisor_admin_path(user),
+                                             class: "btn deep-purple darken-4" %></td>       
+
+          <td><%= link_to 'Make Operator', operator_admin_path(user),
+                                           class: "btn light-blue darken-4" %></td>            
+        </tr>      
+    <% end %>
+  </tbody>
+</table>
